@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新規登録ページ</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/register.css">
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <header class="header">
+            <div class="header-logo">My Portfolio</div>
+            <a href="#" class="btn login-btn">ログイン</a>
+        </header>
+
+        <div class="main-content">
+            <h1 class="main-title">新規登録</h1>
+
+            <div class="form-container">
+                <form th:action="@{/auth/register}" th:object="${userEntity}" method="post" novalidate>
+                    <div class="form-group">
+                        <label for="name">氏名</label>
+                        <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="氏名を入力してください">
+                        <div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">メールアドレス</label>
+                        <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="メールアドレスを入力してください">
+                        <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">パスワード</label>
+                        <input type="password" class="form-control" id="password" th:field="*{password}" placeholder="パスワードを入力してください">
+                        <div class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+                    </div>
+                    <button type="submit" class="submit-btn">登録する</button>
+                </form>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <span class="footer-text">portfolio site</span>
+        </footer>
+    </div>
+</body>
+
+</html>

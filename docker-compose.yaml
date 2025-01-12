@@ -7,8 +7,10 @@ services:
     ports:
       - 8080:8080
     tty: true
+    # volumes:
+    #   - ./:/app
     volumes:
-      - ./:/app
+      - ./src/main/resources:/app/src/main/resources:rw  # resourcesディレクトリのみをマウント（静的ファイルとテンプレートの即時反映）
     depends_on:
       - db
 
@@ -21,3 +23,8 @@ services:
       POSTGRES_DB: "dev"
     ports:
       - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data  
+      
+volumes:
+  postgres-data:

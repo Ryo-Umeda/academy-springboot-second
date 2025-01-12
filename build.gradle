@@ -28,6 +28,9 @@ dependencies {
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'  // @Entity, @Idなどのアノテーション使用するため追記
+    implementation 'org.springframework.boot:spring-boot-devtools'
+
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
     runtimeOnly 'org.postgresql:postgresql'
