@@ -6,14 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ホームページ</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/common.css"> 
     <link rel="stylesheet" href="/css/home.css">
 </head>
 
 <body>
-    <div class="container mt-5">
-        <h1 th:text="${message}"></h1>
-        <p>新規登録が完了しました！</p>
-        <a href="/auth/login" class="btn btn-primary">戻る</a>
+    <div class="wrapper">
+
+        <header class="header">
+            <div class="header-logo">My Portfolio</div>
+
+            <!-- ログアウトボタン: POST メソッド -->
+            <form th:action="@{/auth/logout}" method="post" class="logout-form">
+                <button type="submit" class="btn logout-btn">ログアウト</button>
+            </form>
+        </header>
+
+        <div class="container mt-5">
+            <h1 th:text="${message}"></h1>
+            <p>ログイン認証しました！</p>
+        </div>
+
+        <footer class="footer">
+            <span class="footer-text">portfolio site</span>
+        </footer>
     </div>
 </body>
+
 </html>
