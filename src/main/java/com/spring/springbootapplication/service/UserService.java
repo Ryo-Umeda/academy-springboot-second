@@ -22,7 +22,7 @@ public class UserService implements UserDetailsService{
     private final UserRepository userRepository ;
     private final PasswordEncoder passwordEncoder;
 
-    // UserRepositoryを注入
+    // UserRepository,PasswordEncoderを注入
     public UserService(UserRepository userRepository,  PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;  // パスワードのハッシュ化用

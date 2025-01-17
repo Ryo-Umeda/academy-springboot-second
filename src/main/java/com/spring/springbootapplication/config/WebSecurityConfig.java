@@ -30,6 +30,7 @@ public class WebSecurityConfig {
                 .failureUrl("/auth/login?error=true")  // ログイン失敗時の遷移先
                 .permitAll()  // ログインページは誰でもアクセス可能
             )
+            // ログアウトの設定
             .logout(logout -> logout
                 .logoutUrl("/auth/logout")
                 .logoutSuccessUrl("/auth/login?logout=true")  // ログアウト成功時の遷移先
@@ -37,16 +38,12 @@ public class WebSecurityConfig {
                 .deleteCookies("JSESSIONID")  // Cookie削除
                 .permitAll()  // ログアウトは誰でも実行可能
             )  
-            .exceptionHandling(ex -> ex
-                .authenticationEntryPoint((request, response, authException) -> {
-                    response.sendRedirect("/auth/login");
-                })
-            )
+
             // // セッション管理
             .sessionManagement(session -> session
                 .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))  // セッションを必要時に新規作成する
             // CSRF設定
-            .csrf(csrf -> csrf.ignoringRequestMatchers("/auth/register"));  // CSRF保護を新規登録時に無効化
+            .csrf(csrf -> csrf.ignoringRequestMatchers("/auth/register", "/auth/login", "/auth/logout"));  // CSRF保護を無効化
 
         return http.build();
     }
