@@ -1,0 +1,41 @@
+@import url('/css/common.css');
+
+.text-danger {
+    margin-top: 10px;
+}
+
+/* カスタムファイルアップロードボタン */
+.custom-file-upload {
+    width: 202px;
+    height: 32px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0000001A;
+    font-size: 14px;
+    color: #000000;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    padding: 8px 24px;
+}
+
+
+/* ファイルアップロード入力の非表示 */
+.form-control-file {
+display: none;
+}
+
+
+/* ファイル名表示用 */
+.text-info {
+    font-size: 14px;
+    color: #000000;
+    margin-left: 10px;
+}
+
+/* 送信ボタン */
+.submit-btn {
+    width: 322px;
+}

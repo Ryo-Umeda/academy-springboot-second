@@ -18,7 +18,7 @@ public class WebSecurityConfig {
         http
             // 認証の設定: 記載したURLパターンを許可
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/","/auth/register", "/auth/login","/css/**").permitAll()  // 認証不要のリソース
+                .requestMatchers("/","/auth/register", "/auth/login","/css/**","/js/*","/images/*").permitAll()  // 認証不要のリソース
                 .anyRequest().authenticated()  // それ以外は認証が必要
             )
             // フォームログインの設定
@@ -43,7 +43,7 @@ public class WebSecurityConfig {
             .sessionManagement(session -> session
                 .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))  // セッションを必要時に新規作成する
             // CSRF設定
-            .csrf(csrf -> csrf.ignoringRequestMatchers("/auth/register", "/auth/login", "/auth/logout"));  // CSRF保護を無効化
+            .csrf(csrf -> csrf.ignoringRequestMatchers("/auth/register", "/auth/login", "/auth/logout", "/profile/edit"));  // CSRF保護を無効化
 
         return http.build();
     }

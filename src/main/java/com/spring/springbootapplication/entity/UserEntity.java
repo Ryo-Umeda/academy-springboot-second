@@ -5,6 +5,9 @@ import java.time.LocalDateTime;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
@@ -33,11 +36,30 @@ public class UserEntity {
     @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$", message = "英数字8文字以上で入力してください")
     private String password;  // パスワード
 
+    @Size(min = 50, max = 200, message = "自己紹介は50文字以上200文字以下で入力してください")
+    @Column(name = "bio", columnDefinition = "TEXT")
+    private String bio;  // 自己紹介文
+
+    // @Lob  // 大容量データ（画像）の保存
+    @Column(name = "image", columnDefinition = "BYTEA")
+    private byte[] image;  // プロフィール画像のバイナリデータ
+
     @Column(name = "created_at",updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();  // 登録日時
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt = LocalDateTime.now();  // 更新日時
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = LocalDateTime.now();
+    }
 
 
     //  Getter & Setter 
@@ -73,19 +95,35 @@ public class UserEntity {
         this.password = password;
     }
 
-    public LocalDateTime getCreateAt() {
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreateAt (LocalDateTime createdAt) {
+    public void setCreatedAt (LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDateTime getUpdateAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdateAt (LocalDateTime updatedAt){
+    public void setUpdatedAt (LocalDateTime updatedAt){
         this.updatedAt = updatedAt;
     }
 }

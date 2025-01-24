@@ -7,6 +7,16 @@ body, html {
     text-decoration: none;
 }
 
+label {
+    font-size: 16px;
+    color: #0000008A;
+    font-weight: 400;
+}
+
+textarea {
+    resize: none;
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -66,7 +76,7 @@ body, html {
 .form-container {
     width: 480px;
     margin: 0 auto;
-    margin-top: 40px;
+    margin-top: 80px;
 }
 
 .form-group {
@@ -118,3 +128,9 @@ body, html {
     color: #FFFFFF;
 }
 
+/* aタグの文字変化を無効化 */
+.submit-btn:link,
+.submit-btn:visited {
+    text-decoration: none;  /* 通常時も下線なし */
+    color: #FFFFFF;  /* ホバー前も白 */
+}
