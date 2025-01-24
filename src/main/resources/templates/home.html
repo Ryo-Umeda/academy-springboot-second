@@ -22,9 +22,27 @@
             </form>
         </header>
 
-        <div class="container mt-5">
-            <h1 th:text="${message}"></h1>
-            <p>ログイン認証しました！</p>
+        <div class="main-content">
+            <div class="profile-section">
+                <!-- プロフィール写真 -->
+                <div class="profile-photo">
+                    <div class="photo-placeholder">
+                        <img th:src="@{${image != null and image != '' ? image : '/images/default-profile.png'}}"  alt="プロフィール画像" class="profile-img">
+                    </div>
+                    <p class="user-name" th:text="${userName}">アカデミー花子</p>
+                </div>
+
+                <!-- 自己紹介コンテンツ -->
+                <div class="profile-content">
+                    <h2 class="profile-title">自己紹介</h2>
+
+                    <p class="profile-description" th:text="${bio}">
+                        自分の自己紹介文が入ります。自分の自己紹介文が入ります。自分の自己紹介文が入ります。
+                    </p>
+
+                    <a href="/profile/edit" class="submit-btn">自己紹介を編集する</a>
+                </div>
+            </div>
         </div>
 
         <footer class="footer">

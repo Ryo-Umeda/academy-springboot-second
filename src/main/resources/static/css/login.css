@@ -5,9 +5,13 @@
 }
 
 .text-danger {
+    margin-top: 30px;
     font-size: 18px; 
-    margin-top: 20px; 
     text-align: center;
+}
+
+.form-container {
+    margin-top: 30px;
 }
 
 .button-container {
@@ -18,12 +22,5 @@
 .submit-btn {
     margin-bottom: 40px;
     white-space: nowrap;
-}
-
-/* aタグの文字変化を無効化 */
-.submit-btn:link,
-.submit-btn:visited {
-    text-decoration: none;  /* 通常時も下線なし */
-    color: #FFFFFF;  /* ホバー前も白 */
 }
 

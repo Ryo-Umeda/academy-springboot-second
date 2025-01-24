@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自己紹介編集</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/profile-edit.css">
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <header class="header">
+            <div class="header-logo">My Portfolio</div>
+            <form th:action="@{/auth/logout}" method="post" class="logout-form">
+                <button type="submit" class="btn logout-btn">ログアウト</button>
+            </form>
+        </header>
+
+        <div class="main-content">
+            <h1 class="main-title">自己紹介を編集する</h1>
+            
+            
+            <div class="form-container">
+                <form th:action="@{/profile/edit}" method="post" enctype="multipart/form-data" th:object="${userEntity}" novalidate>
+                    <div class="form-group">
+                        <label for="bio">自己紹介文</label>
+                        <textarea id="bio" name="bio" class="form-control" th:field="*{bio}" minlength="50" maxlength="200" rows="5" required></textarea>
+                        <div class="text-danger" th:if="${#fields.hasErrors('bio')}" th:errors="*{bio}">
+                            自己紹介は50文字以上200文字以下で入力してください
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image">アバター画像</label>
+                        <div class="upload-section">
+                            <label for="image" class="custom-file-upload">画像ファイルを添付する</label>
+                            <input type="file" id="image" name="image" class="form-control-file">
+                            <span id="file-name" class="text-info"></span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">自己紹介を確定する</button>
+
+                </form>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <span class="footer-text">portfolio site</span>
+        </footer>
+    </div>
+
+    <script src="/js/profile-edit.js"></script>
+
+</body>
+
+</html>
