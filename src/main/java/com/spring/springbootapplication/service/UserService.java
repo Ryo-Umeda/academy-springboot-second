@@ -19,10 +19,17 @@ import com.spring.springbootapplication.repository.UserRepository;
 
 import jakarta.validation.Valid;
 
+// デバック用
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 @Service
 public class UserService implements UserDetailsService{
     
+    // デバック用
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
+
     private final UserRepository userRepository ;
     private final PasswordEncoder passwordEncoder;
 
@@ -37,7 +44,7 @@ public class UserService implements UserDetailsService{
         String encodedPassword = passwordEncoder.encode(userEntity.getPassword());
         userEntity.setPassword(encodedPassword);
         
-        // デバッグ: 登録開始時の情報
+        // デバッグ用: 登録開始時の情報
         System.out.println("ユーザー登録処理開始...");
         System.out.println("登録ユーザー: " + userEntity.getEmail());
         System.out.println("画像データ型詳細 (登録前): " + (userEntity.getImage() != null ? userEntity.getImage().getClass().getCanonicalName() : "null"));
@@ -49,7 +56,7 @@ public class UserService implements UserDetailsService{
                     byte[] defaultImage = is.readAllBytes();
                     userEntity.setImage(defaultImage);
                     
-                    // デバッグ: デフォルト画像適用確認
+                    // デバッグ用: デフォルト画像適用確認
                     System.out.println("デフォルト画像が正常に適用されました。サイズ：" + defaultImage.length + " bytes");
                     System.out.println("画像データ型詳細: " + userEntity.getImage().getClass().getCanonicalName());
                 } else {
@@ -76,28 +83,39 @@ public class UserService implements UserDetailsService{
         }
     }
 
-    //     // ユーザーをDBに保存
-        // userRepository.save(userEntity);
-    //     System.out.println("ユーザー登録完了: " + userEntity.getEmail());
-    // }
 
     // メールアドレスによるユーザー検索
     public Optional<UserEntity> findUserByEmail(String email) {
+
+        logger.info("ユーザー検索処理: {}", email);
+
         return userRepository.findByEmail(email);
     }
 
     // 自己紹介の更新処理
     @Transactional
     public void updateUserBio(Long userId, String bio) {
+
+        logger.info("DBに自己紹介文を更新: ユーザーID {}, 自己紹介: {}", userId, bio);
+
         userRepository.updateBio(userId, bio);
     }
 
     // プロフィール画像の更新処理
     @Transactional
     public void updateUserProfileImage(Long userId, byte[] imageBytes) {
+
+        logger.info("DBにプロフィール画像を更新: ユーザーID {}", userId);
+
     if (imageBytes.length > 0) {
         userRepository.updateProfileImage(userId, imageBytes);
+
+        logger.info("プロフィール画像の更新成功、サイズ: {} bytes", imageBytes.length);
+
     } else {
+
+        logger.warn("空の画像データが渡されました");
+
         throw new IllegalArgumentException("空の画像データです");
     }
 }
@@ -105,7 +123,14 @@ public class UserService implements UserDetailsService{
 
     // ユーザーのプロフィール画像を取得
     public byte[] getUserProfileImage(Long userId) {
-        return userRepository.findUserImageById(userId);
+        logger.info("プロフィール画像取得処理: ユーザーID {}", userId);
+        byte[] image = userRepository.findUserImageById(userId);
+        if (image != null) {
+            logger.info("画像取得成功、サイズ: {} bytes", image.length);
+        } else {
+            logger.warn("画像が見つかりません。ユーザーID {}", userId);
+        }
+        return image;
     }
     
     // UserDetailsService インターフェースの実装

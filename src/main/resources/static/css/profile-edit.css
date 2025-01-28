@@ -4,7 +4,6 @@
     margin-top: 10px;
 }
 
-/* カスタムファイルアップロードボタン */
 .custom-file-upload {
     width: 202px;
     height: 32px;
@@ -21,21 +20,32 @@
     padding: 8px 24px;
 }
 
+.upload-section {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: 25px;
+}
+
 
 /* ファイルアップロード入力の非表示 */
 .form-control-file {
-display: none;
+    display: none;
 }
-
 
 /* ファイル名表示用 */
-.text-info {
+#file-name {
     font-size: 14px;
-    color: #000000;
-    margin-left: 10px;
+    word-wrap: break-word;  
+    max-width: 250px;       
+    line-height: 1.5;       
+    overflow-wrap: break-word; 
+    white-space: normal; 
+    display: flex;
+    align-items: center;
 }
 
-/* 送信ボタン */
 .submit-btn {
     width: 322px;
 }
+

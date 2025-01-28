@@ -25,7 +25,7 @@
             
             
             <div class="form-container">
-                <form th:action="@{/profile/edit}" method="post" enctype="multipart/form-data" th:object="${userEntity}" novalidate>
+                <form th:action="@{/profile/edit}" method="post" enctype="multipart/form-data" th:object="${profileEditDTO}" novalidate>
                     <div class="form-group">
                         <label for="bio">自己紹介文</label>
                         <textarea id="bio" name="bio" class="form-control" th:field="*{bio}" minlength="50" maxlength="200" rows="5" required></textarea>

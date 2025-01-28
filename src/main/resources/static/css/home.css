@@ -31,9 +31,9 @@
     border-radius: 50%;
     overflow: hidden; /* 画像が枠をはみ出さないようにする */
     display: flex;
-    justify-content: center; /* 水平方向の中央寄せ */
-    align-items: center; /* 垂直方向の中央寄せ */
-    background-color: #C4C4C4; /* 背景色（仮） */
+    justify-content: center; 
+    align-items: center;
+    background-color: #C4C4C4; 
 }
 
 /* デフォルト画像用 */
