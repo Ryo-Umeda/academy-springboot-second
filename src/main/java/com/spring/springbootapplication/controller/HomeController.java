@@ -10,13 +10,10 @@ import org.springframework.ui.Model;
 import com.spring.springbootapplication.entity.UserEntity;
 import com.spring.springbootapplication.service.UserService;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Controller
 public class HomeController {  
 
-    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
     private final UserService userService;
 
     public HomeController(UserService userService) {
@@ -27,7 +24,6 @@ public class HomeController {
     public String showHomePage(@AuthenticationPrincipal UserDetails userDetails, Model model) {
         
         if (userDetails == null) {
-            logger.warn("未認証ユーザーのホーム画面アクセス。リダイレクト。");
             return "redirect:/auth/login";  // 未ログインならログインページにリダイレクト
         }
 
@@ -35,8 +31,6 @@ public class HomeController {
             // データベースから最新のユーザー情報を取得
             UserEntity userEntity = userService.findUserByEmail(userDetails.getUsername())
                                             .orElseThrow(() -> new UsernameNotFoundException("ユーザーが見つかりません"));
-
-            logger.info("ユーザー情報取得成功: {}", userEntity.getEmail());
 
             // ユーザー情報を取得してビューに渡す
             model.addAttribute("userName", userEntity.getName());
@@ -47,7 +41,6 @@ public class HomeController {
             model.addAttribute("image", imageUrl);
 
         } catch (Exception e) {
-            logger.error("ユーザー情報の取得中にエラー発生", e);
             model.addAttribute("error", "ユーザー情報の取得に失敗しました");
             return "redirect:/auth/login";
         }

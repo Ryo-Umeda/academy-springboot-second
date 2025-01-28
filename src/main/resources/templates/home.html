@@ -7,7 +7,7 @@
     <title>ホームページ</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/common.css"> 
-    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="css/home.css">
 </head>
 
 <body>
@@ -29,16 +29,14 @@
                     <div class="photo-placeholder">
                         <img th:src="@{${image != null and image != '' ? image : '/images/default-profile.png'}}"  alt="プロフィール画像" class="profile-img">
                     </div>
-                    <p class="user-name" th:text="${userName}">アカデミー花子</p>
+                    <p class="user-name" th:text="${userName}"></p>
                 </div>
 
                 <!-- 自己紹介コンテンツ -->
                 <div class="profile-content">
                     <h2 class="profile-title">自己紹介</h2>
 
-                    <p class="profile-description" th:text="${bio}">
-                        自分の自己紹介文が入ります。自分の自己紹介文が入ります。自分の自己紹介文が入ります。
-                    </p>
+                    <p class="profile-description" th:text="${bio}"></p>
 
                     <a href="/profile/edit" class="submit-btn">自己紹介を編集する</a>
                 </div>
