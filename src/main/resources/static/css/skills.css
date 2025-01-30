@@ -1,0 +1,151 @@
+@import url('/css/common.css');
+
+.skills-header {
+    display: flex;
+    width: 960px;
+    margin: 40px auto;
+}
+
+/* 月選択プルダウン */
+.month-dropdown {
+    width: 94px;
+    height: 44px;
+    font-size: 24px;
+    font-weight: 700;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    text-align: center;
+}
+
+.skills-container {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.category-box {
+    width: 960px;
+    height: 436px;
+    border-radius: 8px;
+    border: 1px solid #00000080;
+    padding: 40px;
+    margin-bottom: 40px;
+}
+
+.category-header {
+    display: flex ;
+    justify-content: space-between;
+    align-items: center;
+    width: 880px;  
+    margin-bottom: 30px;
+}
+
+.category-title {
+    font-size: 24px;
+    font-weight: 700;
+    width: 880px;
+    flex-grow: 1; 
+    position: relative;
+}
+    .category-title:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px; 
+    width: 240px; 
+    height: 2px;
+    background-color: #000000BF; 
+} 
+
+.submit-btn.skill-edit-btn {
+    width: 178px;
+    font-size: 14px;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+}
+
+
+.skills-list {
+    width: 880px;
+    height: 276px;
+    overflow-y: auto;
+    margin: 10px auto;
+    border-radius: 4px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* ヘッダーを固定 */
+thead {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 2;
+}
+
+th, td {
+    height: 72px;
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    width: 25%;
+    font-size: 14px;
+}
+
+th {
+    height: 57px;
+    font-weight: 400;
+}
+
+th:first-of-type {
+    text-align: start;
+    padding-left: 50px;
+}
+
+td:first-of-type {
+    text-align: start;
+    padding-left: 50px;
+}
+
+th:nth-of-type(2) {
+    text-align: start;
+}
+
+td:nth-of-type(2) {
+    text-align: start;
+}
+
+.learning-hours-input {
+    width: 160px;
+    height: 40px;
+    font-size: 14px;
+    padding: 10px 12px;
+}
+
+.submit-btn.small-btn {
+    width: 100px;
+    font-size: 14px;
+    width: 158px;
+    height: 32px;
+    color: #1B5678;
+    border: 1px solid #1B5678;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+}
+
+.delete-btn {
+    width: 100px;
+    font-size: 14px;
+    width: 88px;
+    height: 32px;
+    background-color: #EE6969;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}

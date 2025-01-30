@@ -85,3 +85,29 @@
 .submit-btn {
     margin: 0; 
 }
+
+.learning-chart-section {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.chart-title {
+    font-size: 36px;
+    font-weight: 700;
+    position: relative;
+}
+
+/* 学習チャートの下線 */
+.chart-title::after {
+    content: "";
+    display: block;
+    width: 400px;
+    height: 2px;
+    background-color: #000000BF;
+    margin: 8px auto 40px;
+}
+
+.submit-btn.small-btn {
+    width: 152px;
+    margin: 0 auto ; 
+}
