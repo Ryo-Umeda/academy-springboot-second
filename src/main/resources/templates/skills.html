@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学習スキル一覧</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/skills.css">
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <header class="header">
+            <div class="header-logo">My Portfolio</div>
+            <form th:action="@{/auth/logout}" method="post" class="logout-form">
+                <button type="submit" class="btn logout-btn">ログアウト</button>
+            </form>
+        </header>
+
+        <div class="main-content">
+            <!-- 上部エリア -->
+            <div class="skills-header">
+
+                <!-- プルダウン選択 -->
+                <select id="month-select" class="month-dropdown" onchange="changeMonth()">
+                    <option th:each="month : ${pastMonths}"
+                            th:value="${#strings.arraySplit(month, ',')[0]}" 
+                            th:text="${#strings.arraySplit(month, ',')[1]}"
+                            th:selected="${#strings.arraySplit(month, ',')[0] == currentMonth}">
+                    </option>
+                </select>
+            </div>
+
+            <!-- スキルカテゴリごとのボックス -->
+            <div class="skills-container">
+
+                <!-- バックエンド -->
+                <div class="category-box">
+                    <div class="category-header">
+                        <h2 class="category-title">バックエンド</h2>
+                        <a href="/skills/new" class="submit-btn skill-edit-btn">項目を追加する</a>
+                    </div>
+                    <div class="skills-list">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>項目名</th>
+                                    <th>学習時間</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="skill : ${backendSkills}">
+                                    <td th:text="${skill.skillName}">Spring Boot</td>
+                                    <td><input type="number" min="0" class="learning-hours-input" th:value="${skill.learningHours}"></td>
+                                    <td><button class="submit-btn small-btn">学習時間を保存する</button></td>
+                                    <td><button class="delete-btn">削除する</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- フロントエンド -->
+                <div class="category-box">
+                    <div class="category-header">
+                        <h2 class="category-title">フロントエンド</h2>
+                        <a href="/skills/new" class="submit-btn skill-edit-btn">項目を追加する</a>
+                    </div>
+                    <div class="skills-list">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>項目名</th>
+                                    <th>学習時間</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="skill : ${frontendSkills}">
+                                    <td th:text="${skill.skillName}">React</td>
+                                    <td><input type="number" min="0" class="learning-hours-input" th:value="${skill.learningHours}"></td>
+                                    <td><button class="submit-btn small-btn">学習時間を保存する</button></td>
+                                    <td><button class="delete-btn">削除する</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- インフラ -->
+                <div class="category-box">
+                    <div class="category-header">
+                        <h2 class="category-title">インフラ</h2>
+                        <a href="/skills/new" class="submit-btn skill-edit-btn">項目を追加する</a>
+                    </div>
+                    <div class="skills-list">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>項目名</th>
+                                    <th>学習時間</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="skill : ${infraSkills}">
+                                    <td th:text="${skill.skillName}">AWS</td>
+                                    <td><input type="number" min="0" class="learning-hours-input" th:value="${skill.learningHours}"></td>
+                                    <td><button class="submit-btn small-btn">学習時間を保存する</button></td>
+                                    <td><button class="delete-btn">削除する</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <span class="footer-text">portfolio site</span>
+        </footer>
+    </div>
+
+    <script src="/js/skills.js"></script>
+
+</body>
+
+</html>
