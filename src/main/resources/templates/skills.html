@@ -25,7 +25,7 @@
             <div class="skills-header">
 
                 <!-- プルダウン選択 -->
-                <select id="month-select" class="month-dropdown" onchange="changeMonth()">
+                <select id="month-select" class="month-dropdown">
                     <option th:each="month : ${pastMonths}"
                             th:value="${#strings.arraySplit(month, ',')[0]}" 
                             th:text="${#strings.arraySplit(month, ',')[1]}"
@@ -41,7 +41,8 @@
                 <div class="category-box">
                     <div class="category-header">
                         <h2 class="category-title">バックエンド</h2>
-                        <a href="/skills/new" class="submit-btn skill-edit-btn">項目を追加する</a>
+                        <a href="#" class="submit-btn skill-edit-btn" data-category-id="1" data-category-name="バックエンド" 
+                            onclick="navigateToSkillNew(this)">項目を追加する</a>
                     </div>
                     <div class="skills-list">
                         <table>
@@ -55,7 +56,7 @@
                             </thead>
                             <tbody>
                                 <tr th:each="skill : ${backendSkills}">
-                                    <td th:text="${skill.skillName}">Spring Boot</td>
+                                    <td th:text="${skill.skillName}"></td>
                                     <td><input type="number" min="0" class="learning-hours-input" th:value="${skill.learningHours}"></td>
                                     <td><button class="submit-btn small-btn">学習時間を保存する</button></td>
                                     <td><button class="delete-btn">削除する</button></td>
@@ -69,7 +70,8 @@
                 <div class="category-box">
                     <div class="category-header">
                         <h2 class="category-title">フロントエンド</h2>
-                        <a href="/skills/new" class="submit-btn skill-edit-btn">項目を追加する</a>
+                        <a href="#" class="submit-btn skill-edit-btn" data-category-id="2" data-category-name="フロントエンド" 
+                            onclick="navigateToSkillNew(this)">項目を追加する</a>
                     </div>
                     <div class="skills-list">
                         <table>
@@ -83,7 +85,7 @@
                             </thead>
                             <tbody>
                                 <tr th:each="skill : ${frontendSkills}">
-                                    <td th:text="${skill.skillName}">React</td>
+                                    <td th:text="${skill.skillName}"></td>
                                     <td><input type="number" min="0" class="learning-hours-input" th:value="${skill.learningHours}"></td>
                                     <td><button class="submit-btn small-btn">学習時間を保存する</button></td>
                                     <td><button class="delete-btn">削除する</button></td>
@@ -97,7 +99,8 @@
                 <div class="category-box">
                     <div class="category-header">
                         <h2 class="category-title">インフラ</h2>
-                        <a href="/skills/new" class="submit-btn skill-edit-btn">項目を追加する</a>
+                        <a href="#" class="submit-btn skill-edit-btn" data-category-id="3" data-category-name="インフラ"
+                            onclick="navigateToSkillNew(this)">項目を追加する</a>
                     </div>
                     <div class="skills-list">
                         <table>
@@ -111,7 +114,7 @@
                             </thead>
                             <tbody>
                                 <tr th:each="skill : ${infraSkills}">
-                                    <td th:text="${skill.skillName}">AWS</td>
+                                    <td th:text="${skill.skillName}"></td>
                                     <td><input type="number" min="0" class="learning-hours-input" th:value="${skill.learningHours}"></td>
                                     <td><button class="submit-btn small-btn">学習時間を保存する</button></td>
                                     <td><button class="delete-btn">削除する</button></td>
