@@ -19,7 +19,7 @@ public class SkillNewDTO {
 
     @NotNull(message = "学習時間は必ず入力してください")
     @Min(value = 0, message = "学習時間は0以上の数字で入力してください")
-    private Integer learningHours;  // 学習時間（0以上の整数）
+    private Integer learningHours;  // 学習時間
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @NotNull(message = "実施月は必ず入力してください")
