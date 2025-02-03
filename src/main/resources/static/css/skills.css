@@ -80,7 +80,6 @@ table {
     border-collapse: collapse;
 }
 
-/* ヘッダーを固定 */
 thead {
     position: sticky;
     top: 0;
