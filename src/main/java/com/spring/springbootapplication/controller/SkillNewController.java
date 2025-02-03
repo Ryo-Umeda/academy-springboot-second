@@ -88,7 +88,10 @@ public class SkillNewController {
         if (!isSuccess) {
             result.rejectValue("skillName", "error.skillName",
                     skillNewDTO.getSkillName() + " は既に登録されています");
+            
             model.addAttribute("categoryName", skillNewDTO.getCategoryName());
+            model.addAttribute("recordedMonth", skillNewDTO.getRecordedMonth().format(DateTimeFormatter.ofPattern("yyyy-MM")));
+            model.addAttribute("categoryId", skillNewDTO.getCategoryId());
             return "skills-new";
         }
 
