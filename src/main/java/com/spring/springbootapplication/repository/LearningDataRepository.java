@@ -13,9 +13,8 @@ import java.util.List;
 public interface LearningDataRepository extends JpaRepository<LearningDataEntity, Integer> {
 
     // 学習データの重複チェック 同一ユーザー、カテゴリ、月、スキル名が既に存在するか確認
-    Optional<LearningDataEntity> findByUser_IdAndCategory_IdAndRecordedMonthAndSkillName(
+    Optional<LearningDataEntity> findByUser_IdAndRecordedMonthAndSkillName(
             Long userId,
-            Integer categoryId,
             LocalDate recordedMonth,
             String skillName
     );
