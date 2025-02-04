@@ -38,9 +38,8 @@ public class SkillNewService {
 
         // 既存のスキルが存在するかチェック
         Optional<LearningDataEntity> existingSkill = learningDataRepository
-                .findByUser_IdAndCategory_IdAndRecordedMonthAndSkillName(
+                    .findByUser_IdAndRecordedMonthAndSkillName(
                         skillNewDTO.getUserId(),
-                        skillNewDTO.getCategoryId(),
                         skillNewDTO.getRecordedMonth(),
                         skillNewDTO.getSkillName()
                 );
