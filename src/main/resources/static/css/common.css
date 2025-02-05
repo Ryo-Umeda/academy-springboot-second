@@ -47,6 +47,11 @@ textarea {
     white-space: nowrap;  
 }
 
+.header-logo:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
 .login-btn, .logout-btn {
     width: 152px;
     height: 53px;
@@ -60,6 +65,12 @@ textarea {
     justify-content: center;
     align-items: center;
     white-space: nowrap;
+}
+
+.login-btn:hover, .logout-btn:hover {
+    background-color: #F0F0F0;  
+    color: #000000;
+    cursor: pointer;
 }
 
 /* メインタイトル */
@@ -114,6 +125,7 @@ textarea {
 
 .submit-btn:hover {
     background-color: #144564;
+    cursor: pointer;
 }
 
 /* フッター */
@@ -131,6 +143,6 @@ textarea {
 /* aタグの文字変化を無効化 */
 .submit-btn:link,
 .submit-btn:visited {
-    text-decoration: none;  /* 通常時も下線なし */
-    color: #FFFFFF;  /* ホバー前も白 */
+    text-decoration: none;  
+    color: #FFFFFF;  
 }

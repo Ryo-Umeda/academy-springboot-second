@@ -12,7 +12,7 @@
 <body>
     <div class="wrapper">
         <header class="header">
-            <div class="header-logo">My Portfolio</div>
+            <a href="/home" class="header-logo">My Portfolio</a>
             <form th:action="@{/auth/logout}" method="post" class="logout-form">
                 <button type="submit" class="btn logout-btn">ログアウト</button>
             </form>
@@ -29,7 +29,7 @@
 
                     <div class="form-group">
                         <label for="skillName">項目名</label>
-                        <input type="text" id="skillName" name="skillName" class="form-control" th:field="*{skillName}" maxlength="50" required>
+                        <input type="text" id="skillName" name="skillName" class="form-control" th:field="*{skillName}" required>
                         <div class="text-danger" th:if="${#fields.hasErrors('skillName')}" th:errors="*{skillName}"></div>
                         <div class="text-danger" id="skillNameError"></div>
                     </div>

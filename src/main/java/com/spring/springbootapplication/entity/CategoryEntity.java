@@ -34,6 +34,7 @@ public class CategoryEntity {
 
     
     // === Getter & Setter ===
+    
     public Integer getId() {
         return id;
     }

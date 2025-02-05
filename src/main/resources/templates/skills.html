@@ -14,7 +14,7 @@
     <div class="wrapper">
 
         <header class="header">
-            <div class="header-logo">My Portfolio</div>
+            <a href="/home" class="header-logo">My Portfolio</a>
             <form th:action="@{/auth/logout}" method="post" class="logout-form">
                 <button type="submit" class="btn logout-btn">ログアウト</button>
             </form>
@@ -51,15 +51,32 @@
                                     <th>項目名</th>
                                     <th>学習時間</th>
                                     <th></th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr th:each="skill : ${backendSkills}">
+                                <tr th:each="skill : ${backendSkills}" th:attr="data-skill-id=${skill.id}">
                                     <td th:text="${skill.skillName}"></td>
-                                    <td><input type="number" min="0" class="learning-hours-input" th:value="${skill.learningHours}"></td>
-                                    <td><button class="submit-btn small-btn">学習時間を保存する</button></td>
-                                    <td><button class="delete-btn">削除する</button></td>
+                                    <td>
+                                        <form th:action="@{/skills/update}" method="post">
+                                            <input type="hidden" name="skillId" th:value="${skill.id}">
+                                            <input type="hidden" name="skillName" th:value="${skill.skillName}"> 
+                                            <input type="hidden" name="month" th:value="${currentMonth}">
+                                            <input type="hidden" name="categoryId" value="1"> 
+                                            <div class="input-button-wrapper">
+                                                <input type="number" name="learningHours" min="0" class="learning-hours-input" th:value="${skill.learningHours}">
+                                                <button type="submit" class="submit-btn small-btn">学習時間を保存する</button>
+                                            </div>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form th:action="@{/skills/delete}" method="post">
+                                            <input type="hidden" name="skillId" th:value="${skill.id}">
+                                            <input type="hidden" name="skillName" th:value="${skill.skillName}">
+                                            <input type="hidden" name="month" th:value="${currentMonth}">
+                                            <input type="hidden" name="categoryId" value="1">
+                                            <button type="submit" class="delete-btn">削除する</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -80,15 +97,32 @@
                                     <th>項目名</th>
                                     <th>学習時間</th>
                                     <th></th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr th:each="skill : ${frontendSkills}">
+                                <tr th:each="skill : ${frontendSkills}" th:attr="data-skill-id=${skill.id}">
                                     <td th:text="${skill.skillName}"></td>
-                                    <td><input type="number" min="0" class="learning-hours-input" th:value="${skill.learningHours}"></td>
-                                    <td><button class="submit-btn small-btn">学習時間を保存する</button></td>
-                                    <td><button class="delete-btn">削除する</button></td>
+                                    <td>
+                                        <form th:action="@{/skills/update}" method="post">
+                                            <input type="hidden" name="skillId" th:value="${skill.id}">
+                                            <input type="hidden" name="skillName" th:value="${skill.skillName}"> 
+                                            <input type="hidden" name="month" th:value="${currentMonth}">
+                                            <input type="hidden" name="categoryId" value="2"> 
+                                            <div class="input-button-wrapper">
+                                                <input type="number" name="learningHours" min="0" class="learning-hours-input" th:value="${skill.learningHours}">
+                                                <button type="submit" class="submit-btn small-btn">学習時間を保存する</button>
+                                            </div>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form th:action="@{/skills/delete}" method="post">
+                                            <input type="hidden" name="skillId" th:value="${skill.id}">
+                                            <input type="hidden" name="skillName" th:value="${skill.skillName}">
+                                            <input type="hidden" name="month" th:value="${currentMonth}">
+                                            <input type="hidden" name="categoryId" value="2">
+                                            <button type="submit" class="delete-btn">削除する</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -109,21 +143,54 @@
                                     <th>項目名</th>
                                     <th>学習時間</th>
                                     <th></th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr th:each="skill : ${infraSkills}">
+                                <tr th:each="skill : ${infraSkills}" th:attr="data-skill-id=${skill.id}">
                                     <td th:text="${skill.skillName}"></td>
-                                    <td><input type="number" min="0" class="learning-hours-input" th:value="${skill.learningHours}"></td>
-                                    <td><button class="submit-btn small-btn">学習時間を保存する</button></td>
-                                    <td><button class="delete-btn">削除する</button></td>
+                                    <td>
+                                        <form th:action="@{/skills/update}" method="post">
+                                            <input type="hidden" name="skillId" th:value="${skill.id}">
+                                            <input type="hidden" name="skillName" th:value="${skill.skillName}"> 
+                                            <input type="hidden" name="month" th:value="${currentMonth}">
+                                            <input type="hidden" name="categoryId" value="3"> 
+                                            <div class="input-button-wrapper">
+                                                <input type="number" name="learningHours" min="0" class="learning-hours-input" th:value="${skill.learningHours}">
+                                                <button type="submit" class="submit-btn small-btn">学習時間を保存する</button>
+                                            </div>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form th:action="@{/skills/delete}" method="post">
+                                            <input type="hidden" name="skillId" th:value="${skill.id}">
+                                            <input type="hidden" name="skillName" th:value="${skill.skillName}">
+                                            <input type="hidden" name="month" th:value="${currentMonth}">
+                                            <input type="hidden" name="categoryId" value="3">
+                                            <button type="submit" class="delete-btn">削除する</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
 
+            </div>
+        </div>
+
+        <!-- 学習時間保存モーダル -->
+        <div id="successModal" class="modal">
+            <div class="modal-content">
+                <p><span id="addedSkillName"></span> の学習時間を保存しました！ </p>
+                <button class="submit-btn modal-btn" id="returnToList">編集ページに戻る</button>
+            </div>
+        </div>
+
+        <!-- 削除完了モーダル -->
+        <div id="deleteModal" class="modal">
+            <div class="modal-content">
+                <p><span id="deletedSkillName"></span> を削除しました！</p>
+                <button class="submit-btn modal-btn" id="returnToListAfterDelete">編集ページに戻る</button>
             </div>
         </div>
 

@@ -58,6 +58,7 @@ public class LearningDataEntity {
 
     
     // === Getter & Setter ===
+    
     public Integer getId() {
         return id;
     }
