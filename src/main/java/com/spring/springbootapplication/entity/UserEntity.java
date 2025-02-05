@@ -94,7 +94,8 @@ public class UserEntity implements UserDetails {
     }
 
 
-    //  Getter & Setter 
+    // === Getter & Setter ===
+
     public Long getId() {
         return id;
     }

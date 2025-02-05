@@ -49,3 +49,8 @@
     font-size: 14px;
     margin-top: 20px;
 }
+
+.modal-btn:hover {
+    background-color: #15425d;
+    cursor: pointer;
+}
