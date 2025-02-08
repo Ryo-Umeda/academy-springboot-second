@@ -32,4 +32,12 @@ public interface LearningDataRepository extends JpaRepository<LearningDataEntity
 
         // 削除処理
         void deleteByIdAndUser_Id(Long id, Long userId);
+
+        // カテゴリごとの各月の合計学習時間を取得
+        List<LearningDataEntity> findByUser_IdAndRecordedMonthBetween(
+                Long userId,
+                LocalDate startDate,
+                LocalDate endDate
+        );
+
 }
