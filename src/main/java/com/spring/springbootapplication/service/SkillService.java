@@ -10,9 +10,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Optional;
+import java.util.Map;
 
 @Service
 public class SkillService {
@@ -86,5 +89,38 @@ public class SkillService {
                 LocalDate.now().minusMonths(1).format(dbFormat) + "," + LocalDate.now().minusMonths(1).format(displayFormat),
                 LocalDate.now().minusMonths(2).format(dbFormat) + "," + LocalDate.now().minusMonths(2).format(displayFormat)
         );
+    }
+
+    // スキルチャートデータ取得
+    public Map<String, Map<String, Integer>> getSkillChartData(Long userId) {
+        LocalDate now = LocalDate.now();
+        LocalDate threeMonthsAgo = now.minusMonths(2).withDayOfMonth(1); // 先々月の1日
+        LocalDate currentMonth = now.withDayOfMonth(1); // 今月の1日
+
+        List<LearningDataEntity> dataList =
+                learningDataRepository.findByUser_IdAndRecordedMonthBetween(userId, threeMonthsAgo, currentMonth);
+
+        Map<String, Map<String, Integer>> skillChartData = new LinkedHashMap<>();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM");
+
+        for (LearningDataEntity data : dataList) {
+            String month = data.getRecordedMonth().format(formatter); // "YYYY-MM"
+            String category = data.getCategory().getCategoryName();
+
+            skillChartData.putIfAbsent(month, new HashMap<>());
+            skillChartData.get(month).put(category,
+                    skillChartData.get(month).getOrDefault(category, 0) + data.getLearningHours());
+        }
+
+        // カテゴリの学習時間がない場合のデフォルト処理
+        for (String month : List.of(threeMonthsAgo.format(formatter), now.minusMonths(1).format(formatter), now.format(formatter))) {
+            skillChartData.putIfAbsent(month, new HashMap<>());
+            skillChartData.get(month).putIfAbsent("バックエンド", 0);
+            skillChartData.get(month).putIfAbsent("フロントエンド", 0);
+            skillChartData.get(month).putIfAbsent("インフラ", 0);
+        }
+
+        return skillChartData;
     }
 }

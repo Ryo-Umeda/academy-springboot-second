@@ -8,6 +8,8 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/common.css"> 
     <link rel="stylesheet" href="/css/home.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="/js/home.js"></script>
 </head>
 
 <body>
@@ -47,6 +49,11 @@
                 <h2 class="chart-title">学習チャート</h2>
 
                 <a href="/skills" class="submit-btn small-btn">編集する</a>
+            </div>
+
+            <!-- グラフエリア -->
+            <div class="chart-container">
+                <canvas id="learningChart"></canvas>
             </div>
 
         </div>
