@@ -56,7 +56,6 @@ public class ProfileController {
                                 @Valid @ModelAttribute("profileEditDTO") ProfileEditDTO profileEditDTO,
                                 BindingResult result) {
         
-
         if (userDetails == null) {
             return "redirect:/auth/login";
         }

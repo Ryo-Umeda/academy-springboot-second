@@ -14,7 +14,7 @@
     <div class="wrapper">
 
         <header class="header">
-            <div class="header-logo">My Portfolio</div>
+            <a href="/home" class="header-logo">My Portfolio</a>
             <form th:action="@{/auth/logout}" method="post" class="logout-form">
                 <button type="submit" class="btn logout-btn">ログアウト</button>
             </form>
@@ -23,12 +23,11 @@
         <div class="main-content">
             <h1 class="main-title">自己紹介を編集する</h1>
             
-            
             <div class="form-container">
                 <form th:action="@{/profile/edit}" method="post" enctype="multipart/form-data" th:object="${profileEditDTO}" novalidate>
                     <div class="form-group">
                         <label for="bio">自己紹介文</label>
-                        <textarea id="bio" name="bio" class="form-control" th:field="*{bio}" minlength="50" maxlength="200" rows="5" required></textarea>
+                        <textarea id="bio" name="bio" class="form-control" th:field="*{bio}" rows="5" required></textarea>
                         <div class="text-danger" th:if="${#fields.hasErrors('bio')}" th:errors="*{bio}">
                             自己紹介は50文字以上200文字以下で入力してください
                         </div>

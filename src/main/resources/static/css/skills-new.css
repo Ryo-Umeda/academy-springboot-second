@@ -1,9 +1,5 @@
 @import url('/css/common.css');
 
-.text-danger {
-    margin-top: 10px;
-}
-
 .form-container {
     width: 480px;
     margin: 0 auto;

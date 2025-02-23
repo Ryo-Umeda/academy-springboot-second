@@ -43,7 +43,7 @@ public class UserEntity implements UserDetails {
     private String email;  // メールアドレス
 
     @NotBlank(message = "パスワードは必ず入力してください")
-    @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$", message = "英数字8文字以上で入力してください")
+    @Pattern(regexp = "^(|(?=.*[a-zA-Z])(?=.*[0-9]).{8,})$", message = "英数字8文字以上で入力してください")
     private String password;  // パスワード
 
     @Size(min = 50, max = 200, message = "自己紹介は50文字以上200文字以下で入力してください")
