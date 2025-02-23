@@ -146,3 +146,7 @@ textarea {
     text-decoration: none;  
     color: #FFFFFF;  
 }
+
+.text-danger {
+    margin-top: 5px;
+}

@@ -1,9 +1,5 @@
 @import url('/css/common.css');
 
-.text-danger {
-    margin-top: 10px;
-}
-
 .custom-file-upload {
     width: 202px;
     height: 32px;
