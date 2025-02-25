@@ -11,6 +11,10 @@ public class ProfileEditDTO {
 
     private MultipartFile image;  // アップロードされるプロフィール画像
 
+    // 画像のバリデーション（ファイルサイズ5MB以下）
+    public boolean isValidImageSize() {
+        return (image == null || image.getSize() <= 5 * 1024 * 1024);
+    }
 
     // Getter & Setter
     public String getBio() {
@@ -28,4 +32,5 @@ public class ProfileEditDTO {
     public void setImage(MultipartFile image) {
         this.image = image;
     }
+
 }

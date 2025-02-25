@@ -54,13 +54,19 @@ public class ProfileController {
     @PostMapping("/edit")
     public String updateProfile(@AuthenticationPrincipal UserDetails userDetails,
                                 @Valid @ModelAttribute("profileEditDTO") ProfileEditDTO profileEditDTO,
-                                BindingResult result) {
+                                BindingResult result, Model model) {
         
         if (userDetails == null) {
             return "redirect:/auth/login";
         }
 
+        // 画像サイズバリデーション（サーバー側）
+        if (!profileEditDTO.isValidImageSize()) {
+            result.rejectValue("image", "error.image", "ファイルサイズが上限を超えています。5MB以下のファイルを選択してください。");
+        } 
+
         if (result.hasErrors()) {
+            model.addAttribute("profileEditDTO", profileEditDTO);
             return "profile-edit";
         }
 
@@ -73,6 +79,7 @@ public class ProfileController {
         // 画像ファイルの更新処理
         MultipartFile imageFile = profileEditDTO.getImage();
         if (imageFile != null && !imageFile.isEmpty()) {
+            
             try {
                 byte[] imageBytes = imageFile.getBytes();
                 userService.updateUserProfileImage(user.getId(), imageBytes);

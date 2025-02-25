@@ -39,7 +39,11 @@
                             <label for="image" class="custom-file-upload">画像ファイルを添付する</label>
                             <input type="file" id="image" name="image" class="form-control-file">
                             <span id="file-name" class="text-info"></span>
+                            <div class="text-danger" th:if="${#fields.hasErrors('image')}" th:errors="*{image}">
+                                ファイルサイズが上限を超えています。5MB以下のファイルを選択してください。
+                            </div>
                         </div>
+                        
                     </div>
 
                     <button type="submit" class="submit-btn">自己紹介を確定する</button>
