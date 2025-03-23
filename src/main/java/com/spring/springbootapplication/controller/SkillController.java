@@ -32,7 +32,7 @@ public class SkillController {
             @RequestParam(value = "month", required = false) String month,
             Model model,
             @AuthenticationPrincipal UserEntity user  // ログイン中のユーザー情報を取得
-    ) {
+        ) {
         if (user == null) {
             throw new IllegalStateException("ユーザー情報が取得できません。ログイン状態を確認してください。");
         }

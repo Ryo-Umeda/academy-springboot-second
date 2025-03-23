@@ -50,7 +50,7 @@ public class WebSecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();  // パスワードのハッシュ化用エンコーダー、BCryptPasswordEncoder を Spring のコンテキストに Bean として登録
+        return new BCryptPasswordEncoder();  // パスワードのハッシュ化用エンコーダーであるBCryptPasswordEncoder を Spring のコンテキストに Bean として登録
     }
 
     @Bean
